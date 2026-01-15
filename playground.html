@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Playground | UltraScript</title>
+<link rel="stylesheet" href="assets/css/docs.css" />
+<script src="dist/ultra.min.js"></script>
+</head>
+<body>
+<header class="top">
+<div class="logo">UltraScript Playground</div>
+<nav><a href="docs/">Docs</a></nav>
+</header>
+
+
+<div class="layout">
+<aside class="sidebar">
+<h3>Modules</h3>
+<label><input type="checkbox" id="grain"> Grain</label><br />
+<label><input type="checkbox" id="gradient"> Gradient</label>
+</aside>
+
+
+<main class="content">
+<div id="preview" style="height:300px;border:1px solid var(--border)"></div>
+<h3>Generated HTML</h3>
+<pre><code id="output"></code></pre>
+</main>
+</div>
+
+
+<script>
+const preview = document.getElementById('preview');
+const out = document.getElementById('output');
+
+
+document.querySelectorAll('input').forEach(i => i.onchange = () => {
+preview.innerHTML = '';
+let html = '';
+if (grain.checked) html += '<div data-grain style="height:100%"></div>';
+if (gradient.checked) html += '<div data-gradient="blue purple" style="height:100%"></div>';
+preview.innerHTML = html;
+out.textContent = html;
+});
+</script>
+</body>
+</html>
